@@ -35,6 +35,7 @@ const Starter = () => {
     // return <BoilerPlate />;
 
     // changing the return to display the balance
+    // The important thing to note here are the {publicKey ? "Yes" : "No"} and {balance} variables. These variables are being used to display the user's public key and balance in the UI, and will update if those variables change.
     return (
         <main className="min-h-screen text-white">
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
