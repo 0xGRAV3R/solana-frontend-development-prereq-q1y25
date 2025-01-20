@@ -18,6 +18,19 @@ const Starter = () => {
     // allows us to add the wallet account balance to our react function component
     const [balance, setBalance] = React.useState<number | null>(0);
 
+    // when the status of "connection" or "publicKey" changes, we execute the code block below
+    React.useEffect(() => {
+        const getInfo = async () => {
+        if (connection && publicKey) {
+            // we get the account info for the user's wallet data store and set the balance in our application's state
+            const info = await connection.getAccountInfo(publicKey);
+            setBalance(info!.lamports / web3.LAMPORTS_PER_SOL);
+        }
+        };
+        getInfo();
+        // the code above will execute whenever these variables change in any way
+    }, [connection, publicKey]);
+
     // we now have a function that returns a component
     return <BoilerPlate />;
 }
