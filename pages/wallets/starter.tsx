@@ -15,6 +15,9 @@ const Starter = () => {
     // user's public key of the wallet they connected to our application
     const { publicKey } = useWallet();
 
+    // allows us to add the wallet account balance to our react function component
+    const [balance, setBalance] = React.useState<number | null>(0);
+
     // we now have a function that returns a component
     return <BoilerPlate />;
 }
