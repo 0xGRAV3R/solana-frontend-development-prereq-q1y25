@@ -10,8 +10,14 @@ import { Counter } from "../../programs/types/counter";
 import { Keypair, PublicKey } from "@solana/web3.js";
 import BoilerPlate from '../../components/BoilerPlate';
 
-const Starter = () => (
+const Starter = () => {
+    const [counterKey, setCounterKey] = useState("");
+    const [count, setCount] = useState(0);
+    const [txSig, setTxSig] = useState("");
+
+    const { connection } = useConnection();
+    const { publicKey, wallet } = useWallet();
     <BoilerPlate />
-)
+}
 
 export default Starter;
