@@ -17,6 +17,17 @@ const Starter = () => {
 
     const { connection } = useConnection();
     const { publicKey, wallet } = useWallet();
+
+    const provider = new AnchorProvider(
+        connection,
+        wallet?.adapter as unknown as NodeWallet,
+        AnchorProvider.defaultOptions()
+    );
+    
+    const counterProgram = new Program(
+        CounterIDL as unknown as Counter,
+        provider
+    );
     <BoilerPlate />
 }
 
