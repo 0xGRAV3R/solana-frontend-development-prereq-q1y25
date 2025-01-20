@@ -32,7 +32,38 @@ const Starter = () => {
     }, [connection, publicKey]);
 
     // we now have a function that returns a component
-    return <BoilerPlate />;
+    // return <BoilerPlate />;
+
+    // changing the return to display the balance
+    return (
+        <main className="min-h-screen text-white">
+          <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
+            <div className="col-span-1 lg:col-start-2 lg:col-end-4 rounded-lg bg-[#2a302f] h-60 p-4">
+              <div className="flex justify-between items-center">
+                <h2 className="text-3xl font-semibold">account info ✨</h2>
+              </div>
+    
+              <div className="mt-8 bg-[#222524] border-2 border-gray-500 rounded-lg p-2">
+                <ul className="p-2">
+                  <li className="flex justify-between">
+                    <p className="tracking-wider">Wallet is connected...</p>
+                    <p className="text-turbine-green italic font-semibold">
+                      {publicKey ? "yes" : "no"}
+                    </p>
+                  </li>
+    
+                  <li className="text-sm mt-4 flex justify-between">
+                    <p className="tracking-wider">Balance...</p>
+                    <p className="text-turbine-green italic font-semibold">
+                      {balance}
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </main>
+      );
 }
 
 export default Starter;
