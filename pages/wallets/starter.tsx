@@ -9,7 +9,9 @@ import { useConnection, useWallet } from "@solana/wallet-adapter-react";
 import BoilerPlate from '../../components/BoilerPlate';
 
 const Starter = () => (
-    <BoilerPlate />
+    // connection context object that is injected into the browser by the wallet
+    const { connection } = useConnection();
+    return <BoilerPlate />;
 )
 
 export default Starter;
