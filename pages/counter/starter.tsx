@@ -44,6 +44,39 @@ const Starter = () => {
         return transaction;
     };
 
+    const handleInitializeCounter = async () => {
+        if (!connection || !publicKey) {
+          toast.error("Please connect your wallet.");
+          return;
+        }
+        const transaction = await getPreparedTransaction();
+        const counterKeypair = Keypair.generate();
+        const instruction = await counterProgram.methods
+          .initialize()
+          .accounts({
+            payer: publicKey,
+            counter: counterKeypair.publicKey,
+          })
+          .instruction();
+        transaction.add(instruction);
+    
+        try {
+          const signature = await provider.sendAndConfirm(
+            transaction,
+            [counterKeypair],
+            {
+              skipPreflight: true,
+            }
+          );
+          setTxSig(signature);
+          setCounterKey(counterKeypair.publicKey.toBase58());
+        } catch (error) {
+          console.log(error);
+          toast.error("Transaction failed!");
+        }
+    };
+    
+
     <BoilerPlate />
 }
 
