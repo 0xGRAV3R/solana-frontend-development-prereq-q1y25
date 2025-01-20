@@ -40,7 +40,7 @@ const Starter = () => {
           <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 p-4">
             <div className="col-span-1 lg:col-start-2 lg:col-end-4 rounded-lg bg-[#2a302f] h-60 p-4">
               <div className="flex justify-between items-center">
-                <h2 className="text-3xl font-semibold">account info ✨</h2>
+                <h2 className="text-3xl font-semibold">account info 😹</h2>
               </div>
     
               <div className="mt-8 bg-[#222524] border-2 border-gray-500 rounded-lg p-2">
