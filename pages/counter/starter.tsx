@@ -28,6 +28,22 @@ const Starter = () => {
         CounterIDL as unknown as Counter,
         provider
     );
+
+    const getPreparedTransaction = async () => {
+        const { blockhash, lastValidBlockHeight } =
+          await connection.getLatestBlockhash();
+        const txInfo = {
+          /** The transaction fee payer */
+          feePayer: publicKey,
+          /** A recent blockhash */
+          blockhash: blockhash,
+          /** the last block chain can advance to before tx is exportd expired */
+          lastValidBlockHeight: lastValidBlockHeight,
+        };
+        const transaction = new web3.Transaction(txInfo);
+        return transaction;
+    };
+
     <BoilerPlate />
 }
 
