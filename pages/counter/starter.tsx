@@ -75,6 +75,32 @@ const Starter = () => {
           toast.error("Transaction failed!");
         }
     };
+
+    const handleIncrementCounter = async () => {
+        if (!connection || !publicKey) {
+          toast.error("Please connect your wallet.");
+          return;
+        }
+    
+        const transaction = await getPreparedTransaction();
+        const instruction = await counterProgram.methods
+          .increment()
+          .accounts({
+            counter: new PublicKey(counterKey),
+          })
+          .instruction();
+        transaction.add(instruction);
+    
+        try {
+          const signature = await provider.sendAndConfirm(transaction, [], {
+            skipPreflight: true,
+          });
+          setTxSig(signature);
+        } catch (error) {
+          console.log(error);
+          toast.error("Transaction failed!");
+        }
+    };
     
 
     <BoilerPlate />
