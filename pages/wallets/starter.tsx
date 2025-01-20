@@ -11,6 +11,9 @@ import BoilerPlate from '../../components/BoilerPlate';
 const Starter = () => (
     // connection context object that is injected into the browser by the wallet
     const { connection } = useConnection();
+
+    // user's public key of the wallet they connected to our application
+    const { publicKey } = useWallet();
     return <BoilerPlate />;
 )
 
