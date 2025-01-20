@@ -102,6 +102,21 @@ const Starter = () => {
         }
     };
     
+    useEffect(() => {
+        const getInfo = async () => {
+          if (connection && publicKey && counterKey) {
+            try {
+              const currentCount = await counterProgram.account.counter.fetch(
+                new PublicKey(counterKey)
+              );
+              setCount(currentCount.count);
+            } catch (error) {
+              console.log(error);
+            }
+          }
+        };
+        getInfo();
+    }, [connection, publicKey, counterKey, txSig]);
 
     <BoilerPlate />
 }
