@@ -14,6 +14,8 @@ const Starter = () => (
 
     // user's public key of the wallet they connected to our application
     const { publicKey } = useWallet();
+
+    // we now have a function that returns a component
     return <BoilerPlate />;
 )
 
