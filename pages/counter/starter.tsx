@@ -102,6 +102,7 @@ const Starter = () => {
         }
     };
     
+    // This useEffect will run whenever the counterKey, txSig, or connection changes
     useEffect(() => {
         const getInfo = async () => {
           if (connection && publicKey && counterKey) {
