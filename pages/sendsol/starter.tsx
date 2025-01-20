@@ -49,7 +49,29 @@ const Starter = () => {
           console.log(error);
           toast.error("Transaction failed!");
         }
-    }; 
+    };
+    
+    useEffect(() => {
+        const getInfo = async () => {
+          if (connection && publicKey) {
+            const info = await connection.getAccountInfo(publicKey);
+            setBalance(info!.lamports / web3.LAMPORTS_PER_SOL);
+          }
+        };
+        getInfo();
+      }, [connection, publicKey]);
+    
+      const outputs = [
+        {
+          title: "Account Balance...",
+          dependency: balance,
+        },
+        {
+          title: "Transaction Signature...",
+          dependency: txSig,
+          href: `https://explorer.solana.com/tx/${txSig}?cluster=devnet`,
+        },
+    ];
 
     return <BoilerPlate />;
   };
