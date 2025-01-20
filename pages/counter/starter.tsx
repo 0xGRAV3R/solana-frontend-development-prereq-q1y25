@@ -119,6 +119,18 @@ const Starter = () => {
         getInfo();
     }, [connection, publicKey, counterKey, txSig]);
 
+    const outputs = [
+        {
+          title: "Counter Value...",
+          dependency: count,
+        },
+        {
+          title: "Latest Transaction Signature...",
+          dependency: txSig,
+          href: `https://explorer.solana.com/tx/${txSig}?cluster=devnet`,
+        },
+    ];
+
     <BoilerPlate />
 }
 
